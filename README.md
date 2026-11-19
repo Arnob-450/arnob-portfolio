@@ -46,6 +46,7 @@ This repository houses the complete full-stack codebase for Tawhid Khan Arnob's 
   - *Dragon News* (Interactive News Portal)
   - *Books Vibe* (Book Discovery & Reading List Tracker)
   - *Digitools Platform* (Developer Productivity Utilities)
+- **Certifications & Achievements**: Dedicated section showcasing verified credentials, including SQL Certification (Intellipaat Academy), DIU Mathematics Olympiad, and Career Planning Seminar awards with PDF view and download capabilities.
 - **One-Click CV Download**: Direct access to Arnob's verified curriculum vitae in PDF format with polite status feedback.
 - **Full-Stack Contact Form**: Form validation on both client and server sides with resilient error handling.
 - **MongoDB Atlas Persistence**: Contact form inquiries are securely stored in a cloud MongoDB database with full timestamp and status tracking.
@@ -80,6 +81,7 @@ This repository houses the complete full-stack codebase for Tawhid Khan Arnob's 
 arnob-portfolio/
 ├── frontend/                     # Next.js 16 App Router Frontend
 │   ├── public/
+│   │   ├── certificates/         # Certificate PDFs and rendered previews
 │   │   ├── images/
 │   │   │   ├── profile/          # Profile portrait photos
 │   │   │   └── projects/         # Captured project preview screenshots
@@ -93,9 +95,9 @@ arnob-portfolio/
 │   │   │   ├── chatbot/          # Interactive Gemini Chatbot Modal
 │   │   │   ├── layout/           # Navbar, Footer
 │   │   │   ├── projects/         # ProjectCard component
-│   │   │   ├── sections/         # Hero, About, Skills, Education, Experience, Projects, Contact
+│   │   │   ├── sections/         # Hero, About, Skills, Education, Experience, Projects, Certifications, Contact
 │   │   │   └── ui/               # Button, Badge, Card, ProfileImage, DownloadCVButton
-│   │   ├── data/                 # Verified data files (personal, projects, skills, education)
+│   │   ├── data/                 # Verified data files (personal, projects, skills, education, certifications)
 │   │   ├── hooks/                # Active section & scroll listener hooks
 │   │   └── lib/                  # Utility helpers (cn, smooth scrolling)
 │   ├── .env.example              # Frontend environment configuration template
