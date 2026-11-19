@@ -2,12 +2,15 @@
 
 /**
  * Navbar.jsx
- * Responsive sticky navbar with active section observer and mobile menu.
+ * Responsive sticky navbar with active section observer and mobile menu:
+ * - Desktop: Pill navigation with active section indicator and Download CV button
+ * - Mobile: Hamburger toggle with accessible touch target (>=44px)
+ * - Mobile Drawer: Smooth slide-down, active state, closes on selection or Escape key
+ * - Locks background body scrolling when mobile drawer is open
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import navLinks from "@/data/navigation";
-import personal from "@/data/personal";
 import DownloadCVButton from "@/components/ui/DownloadCVButton";
 import { useScrolled } from "@/hooks/useScrolled";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -20,6 +23,7 @@ export default function Navbar() {
   const scrolled = useScrolled(15);
   const activeSection = useActiveSection(sectionIds);
 
+  // Close menu and prevent scroll lock on unmount or navigation
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const id = href.replace("#", "");
@@ -27,19 +31,42 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Handle Escape key to close mobile drawer
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   return (
     <header
       role="banner"
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-[#08090D]/90 backdrop-blur-md border-b border-[#232634] shadow-lg shadow-black/40 py-3"
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300 w-full",
+        scrolled || menuOpen
+          ? "bg-[#08090D]/95 backdrop-blur-md border-b border-[#232634] shadow-lg shadow-black/40 py-3"
           : "bg-transparent py-4 sm:py-5"
       )}
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 w-full"
       >
         {/* Personal Branding / Logo */}
         <a
@@ -56,7 +83,9 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center gap-1.5 bg-[#0E101D]/80 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-xl shadow-lg shadow-black/30">
           {navLinks
-            .filter((link) => ["home", "about", "skills", "certifications", "projects", "contact"].includes(link.id))
+            .filter((link) =>
+              ["home", "about", "skills", "certifications", "projects", "contact"].includes(link.id)
+            )
             .map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -94,34 +123,34 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
           onClick={() => setMenuOpen((prev) => !prev)}
-          className="flex lg:hidden flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 text-zinc-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+          className="flex lg:hidden flex-col justify-center items-center w-11 h-11 min-w-[44px] min-h-[44px] gap-1.5 rounded-xl border border-zinc-800 bg-zinc-900/80 text-zinc-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 cursor-pointer"
         >
           <span
             className={cn(
-              "block h-0.5 w-4 rounded-full bg-current transition-all duration-300",
+              "block h-0.5 w-5 rounded-full bg-current transition-all duration-300",
               menuOpen && "translate-y-2 rotate-45"
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-4 rounded-full bg-current transition-all duration-300",
+              "block h-0.5 w-5 rounded-full bg-current transition-all duration-300",
               menuOpen && "opacity-0"
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-4 rounded-full bg-current transition-all duration-300",
+              "block h-0.5 w-5 rounded-full bg-current transition-all duration-300",
               menuOpen && "-translate-y-2 -rotate-45"
             )}
           />
         </button>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Navigation */}
       {menuOpen && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-xl px-4 py-4 shadow-2xl animate-fade-in"
+          className="lg:hidden border-b border-zinc-800 bg-[#08090D]/98 backdrop-blur-2xl px-4 py-5 shadow-2xl animate-fade-in max-h-[calc(100dvh-65px)] overflow-y-auto"
         >
           <ul className="flex flex-col gap-1.5" role="list">
             {navLinks.map((link) => {
@@ -133,28 +162,22 @@ export default function Navbar() {
                     onClick={(e) => handleNavClick(e, link.href)}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                      "flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]",
                       isActive
-                        ? "bg-violet-500/15 text-violet-300 font-semibold"
-                        : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"
+                        ? "bg-violet-500/15 text-violet-300 font-semibold border border-violet-500/30"
+                        : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/80"
                     )}
                   >
                     <span>{link.label}</span>
-                    {isActive && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
-                    )}
+                    {isActive && <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse" />}
                   </a>
                 </li>
               );
             })}
           </ul>
 
-          <div className="mt-4 pt-3 border-t border-zinc-800/80 flex justify-center">
-            <DownloadCVButton
-              variant="secondary"
-              size="md"
-              className="w-full"
-            />
+          <div className="mt-4 pt-4 border-t border-zinc-800/80 flex justify-center">
+            <DownloadCVButton variant="secondary" size="md" className="w-full py-3 min-h-[44px]" />
           </div>
         </div>
       )}

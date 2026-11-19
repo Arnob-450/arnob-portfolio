@@ -149,7 +149,7 @@ export default function ChatbotModal() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Close AI chat assistant" : "Open AI chat assistant"}
         aria-expanded={isOpen}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-violet-600 via-purple-600 to-cyan-500 shadow-xl shadow-violet-600/30 text-white transition-all duration-300 hover:scale-105 hover:shadow-violet-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gradient-to-tr from-violet-600 via-purple-600 to-cyan-500 shadow-xl shadow-violet-600/30 text-white transition-all duration-300 hover:scale-105 hover:shadow-violet-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 cursor-pointer"
       >
         {isOpen ? (
           /* Close Icon */
@@ -180,7 +180,7 @@ export default function ChatbotModal() {
           role="dialog"
           aria-modal="true"
           aria-label="AI Portfolio Assistant Window"
-          className="fixed bottom-24 right-4 sm:right-6 z-50 flex h-[560px] max-h-[80vh] w-[92vw] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-[#232634] bg-[#101119]/95 shadow-2xl shadow-black/80 backdrop-blur-xl animate-fade-in"
+          className="fixed bottom-18 sm:bottom-24 right-2 sm:right-6 z-50 flex h-[520px] max-h-[82dvh] w-[calc(100vw-16px)] sm:w-[400px] max-w-[420px] flex-col overflow-hidden rounded-2xl border border-[#232634] bg-[#101119]/98 shadow-2xl shadow-black/80 backdrop-blur-xl animate-fade-in"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-[#232634] bg-[#171923]/90 px-4 py-3.5">
