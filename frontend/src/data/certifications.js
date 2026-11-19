@@ -14,8 +14,11 @@ export const certifications = [
     credentialId: "31679-619-332712",
     description:
       "Successfully completed all curriculum requirements stipulated by Intellipaat for the Free SQL Certification Course to achieve database querying and management excellence.",
+    previewImage: "/certificates/intellipaat-sql-preview.png",
     image: "/certificates/intellipaat-sql-preview.png",
     pdf: "/certificates/intellipaat-sql-certification.pdf",
+    credentialUrl:
+      "https://intellipaat.com/academy/certificate-link/?Yz02MTkmdT0zMzI3MTImZXh0PTE=",
     verificationUrl:
       "https://intellipaat.com/academy/certificate-link/?Yz02MTkmdT0zMzI3MTImZXh0PTE=",
     skills: ["SQL", "Relational Databases", "Data Querying"],
@@ -29,6 +32,7 @@ export const certifications = [
     credentialId: "Participant ID: 251-35-450",
     description:
       "Participated in the DIU Mathematics Olympiad – Summer 2025 (Preliminary Round), organized by the Faculty of Science & Information Technology in association with DIUMS at Daffodil International University.",
+    previewImage: "/certificates/diums-math-olympiad-preview.png",
     image: "/certificates/diums-math-olympiad-preview.png",
     pdf: "/certificates/diums-math-olympiad-2025.pdf",
     skills: ["Mathematics", "Problem Solving", "Analytical Thinking"],
@@ -42,6 +46,7 @@ export const certifications = [
     credentialId: "",
     description:
       "Awarded for active participation and engagement in the 'Day Long Seminar on Career Planning Roadmap' held at Daffodil International University.",
+    previewImage: "/certificates/diu-career-achievement-preview.png",
     image: "/certificates/diu-career-achievement-preview.png",
     pdf: "/certificates/diu-career-planning-roadmap-achievement.pdf",
     skills: ["Career Planning", "Software Engineering", "Professional Growth"],
@@ -55,6 +60,7 @@ export const certifications = [
     credentialId: "",
     description:
       "Recognized for valuable support and dedication as an event volunteer in the 'Day Long Seminar on Career Planning Roadmap', ensuring the smooth organization and execution of the seminar.",
+    previewImage: "/certificates/diu-career-appreciation-preview.png",
     image: "/certificates/diu-career-appreciation-preview.png",
     pdf: "/certificates/diu-career-planning-roadmap-appreciation.pdf",
     skills: ["Volunteering", "Team Collaboration", "Event Coordination"],

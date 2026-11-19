@@ -1,130 +1,118 @@
+"use client";
+
 /**
  * AboutSection.jsx
- * Professional About Me section.
- * Contains personal intro, verified educational background, and web development interests.
+ * Independent Full-Width Section:
+ * - Section header with badge and title.
+ * - Left: Glowing developer workstation illustration.
+ * - Right: In-depth biography, academic context, and primary development interests.
  */
 
 import personal from "@/data/personal";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 
 export default function AboutSection() {
+  const interests = [
+    "Full Stack Architecture",
+    "MERN Stack (React, Node, Express, Mongo)",
+    "Next.js App Router",
+    "Scalable REST APIs",
+    "Clean Code & Performance",
+    "Responsive UI/UX",
+  ];
+
   return (
-    <section
-      id="about"
-      aria-label="About me"
-      className="py-24 px-4 sm:px-6 lg:px-8 border-t border-zinc-900"
-    >
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          title="About Me"
-          subtitle="A brief introduction to my background, education, and passions in software engineering."
+    <div className="w-full">
+      {/* Section Header */}
+      <div className="mb-12 text-center lg:text-left">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1 text-xs font-semibold text-violet-300 mb-3">
+          About Me
+        </span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Turning Ideas into Digital Reality
+        </h2>
+        <p className="mt-3 text-base text-[#A1A1AA] max-w-2xl">
+          A dedicated software engineering student with an appetite for crafting modern, high-performance web applications.
+        </p>
+      </div>
+
+      {/* Main Content Card */}
+      <div className="rounded-3xl border border-white/10 bg-[#141725] p-6 sm:p-10 lg:p-12 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+        {/* Subtle Ambient Glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-violet-600/15 blur-[100px]"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Main Story & Interests Card */}
-          <Card className="lg:col-span-7 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="h-2 w-2 rounded-full bg-violet-500" />
-                <h3 className="text-xl font-bold text-zinc-100">
-                  Background &amp; Passions
-                </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Developer Laptop Graphic */}
+          <div className="lg:col-span-5 flex items-center justify-center">
+            <div className="relative w-full max-w-[340px] aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#1A1E30] to-[#0A0D18] border border-white/10 p-5 flex flex-col items-center justify-center shadow-inner group">
+              {/* Screen Glow */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-violet-600/20 blur-xl group-hover:bg-violet-600/30 transition-colors duration-500"
+              />
+
+              {/* Laptop Screen Frame */}
+              <div className="relative w-full aspect-[16/10] rounded-xl bg-[#08090D] border border-violet-500/40 shadow-2xl flex flex-col items-center justify-center p-4 overflow-hidden">
+                {/* Screen Top Bar */}
+                <div className="absolute top-2.5 left-3 flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-rose-500/80" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500/80" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/80" />
+                </div>
+
+                {/* Glowing Code Symbol */}
+                <div className="flex items-center justify-center text-4xl sm:text-5xl font-extrabold font-mono tracking-wider bg-gradient-to-r from-violet-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                  &lt;/&gt;
+                </div>
+
+                {/* Simulated Terminal Lines */}
+                <div className="mt-3 flex flex-col gap-1.5 w-4/5 opacity-40">
+                  <div className="h-1 w-full bg-violet-400 rounded-full" />
+                  <div className="h-1 w-2/3 bg-cyan-400 rounded-full" />
+                </div>
               </div>
 
-              <div className="space-y-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
-                {personal.aboutParagraphs.map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
-                ))}
-              </div>
+              {/* Laptop Base Stand */}
+              <div className="w-[88%] h-3 mt-2 bg-gradient-to-b from-zinc-700 to-zinc-900 rounded-b-md shadow-md" />
+              <div className="w-[32%] h-1 bg-zinc-600 rounded-b-sm" />
             </div>
+          </div>
 
-            {/* Core Interests Badges */}
-            <div className="mt-8 pt-6 border-t border-zinc-800/80">
-              <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-3">
-                Primary Development Interests
+          {/* Right Column: Detailed Narrative */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">
+              Hello! I&apos;m Tawhid Khan Arnob
+            </h3>
+
+            <p className="text-sm sm:text-base leading-relaxed text-[#A1A1AA]">
+              I am currently in my <strong>7th semester of BSc in Software Engineering</strong> at <strong>Daffodil International University</strong>. My core passion lies in translating creative architectural concepts into resilient, modern web products.
+            </p>
+
+            <p className="text-sm sm:text-base leading-relaxed text-[#A1A1AA]">
+              Over the course of my university studies and intensive project development, I have focused heavily on JavaScript and TypeScript ecosystems, building full-stack platforms with <strong>React, Next.js, Node.js, Express.js, and MongoDB</strong>.
+            </p>
+
+            {/* Core Development Interests */}
+            <div className="pt-4 border-t border-white/5">
+              <h4 className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">
+                Core Development Areas
               </h4>
               <div className="flex flex-wrap gap-2">
-                {[
-                  "Full Stack Development",
-                  "MERN Architecture",
-                  "Responsive UI/UX",
-                  "RESTful APIs",
-                  "Software Engineering Best Practices",
-                  "Modern Next.js & React",
-                ].map((interest) => (
+                {interests.map((interest) => (
                   <span
                     key={interest}
-                    className="rounded-md border border-zinc-700/60 bg-zinc-800/60 px-3 py-1 text-xs text-zinc-300 font-medium"
+                    className="rounded-lg border border-white/10 bg-[#10121B] px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:border-violet-500/40 transition-colors"
                   >
                     {interest}
                   </span>
                 ))}
               </div>
             </div>
-          </Card>
-
-          {/* Key Facts & Academic Overview */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {/* Education Card */}
-            <Card className="flex-1 hover:border-zinc-700 transition-colors">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
-                    Academic Background
-                  </span>
-                  <h3 className="text-lg font-bold text-zinc-100 mt-1">
-                    {personal.education.degree}
-                  </h3>
-                  <p className="text-sm font-medium text-zinc-300 mt-0.5">
-                    {personal.education.university}
-                  </p>
-                </div>
-                <span className="rounded-full bg-violet-500/10 border border-violet-500/30 p-2.5 text-violet-400 text-lg">
-                  🎓
-                </span>
-              </div>
-              <div className="mt-4 flex items-center gap-2 text-xs text-zinc-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                <span>Current Status: <strong className="text-zinc-200">{personal.education.semester}</strong></span>
-              </div>
-            </Card>
-
-            {/* Location & Contact Details */}
-            <Card className="flex-1 hover:border-zinc-700 transition-colors">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
-                    Location &amp; Communication
-                  </span>
-                  <h3 className="text-base font-semibold text-zinc-200 mt-1">
-                    {personal.contact.location}
-                  </h3>
-                  <a
-                    href={`mailto:${personal.contact.email}`}
-                    className="inline-block text-sm text-cyan-400 hover:text-cyan-300 mt-1 transition-colors break-all"
-                  >
-                    {personal.contact.email}
-                  </a>
-                </div>
-                <span className="rounded-full bg-cyan-500/10 border border-cyan-500/30 p-2.5 text-cyan-400 text-lg">
-                  📍
-                </span>
-              </div>
-            </Card>
-
-            {/* Career Objective Summary */}
-            <Card className="bg-gradient-to-br from-zinc-900 to-zinc-900/60 border-zinc-800">
-              <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">
-                Career Goal
-              </h4>
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                Aspiring to contribute as an effective full-stack software engineer, building robust, scalable web products while collaborating closely with experienced development teams.
-              </p>
-            </Card>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

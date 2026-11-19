@@ -33,7 +33,7 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80 shadow-lg shadow-black/20 py-3"
+          ? "bg-[#08090D]/90 backdrop-blur-md border-b border-[#232634] shadow-lg shadow-black/40 py-3"
           : "bg-transparent py-4 sm:py-5"
       )}
     >
@@ -45,35 +45,37 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "#home")}
-          className="group flex items-center gap-1 text-base sm:text-lg font-bold tracking-tight text-zinc-100 hover:text-white transition-colors"
+          className="group flex items-center gap-2 text-lg sm:text-xl font-bold tracking-tight text-white transition-transform hover:scale-105"
         >
-          <span className="text-violet-400 group-hover:text-violet-300 transition-colors">&lt;</span>
-          <span>{personal.name.split(" ")[0]}</span>
-          <span className="text-cyan-400 font-mono"> /</span>
-          <span className="text-violet-400 group-hover:text-violet-300 transition-colors">&gt;</span>
+          <span className="flex items-center text-violet-400 font-mono text-base font-bold group-hover:text-cyan-400 transition-colors">
+            &lt;/&gt;
+          </span>
+          <span className="text-white font-extrabold tracking-tight">Arnob</span>
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-1 bg-zinc-900/60 border border-zinc-800/80 px-3 py-1.5 rounded-full backdrop-blur-md">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "relative px-3 py-1 text-xs font-medium rounded-full transition-all duration-200",
-                  isActive
-                    ? "text-white bg-violet-500/20 text-violet-300 shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50"
-                )}
-              >
-                {link.label}
-              </a>
-            );
-          })}
+        <div className="hidden lg:flex items-center gap-1.5 bg-[#0E101D]/80 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-xl shadow-lg shadow-black/30">
+          {navLinks
+            .filter((link) => ["home", "about", "skills", "certifications", "projects", "contact"].includes(link.id))
+            .map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "relative px-3.5 py-1 text-xs font-medium rounded-full transition-all duration-200",
+                    isActive
+                      ? "text-white bg-violet-600/30 border border-violet-500/40 shadow-sm"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
         </div>
 
         {/* Desktop Quick Download CV Action */}
@@ -81,7 +83,7 @@ export default function Navbar() {
           <DownloadCVButton
             variant="secondary"
             size="sm"
-            className="text-xs"
+            className="rounded-full border-white/15 bg-white/5 hover:bg-violet-600/20 hover:border-violet-500/50 text-white text-xs px-4 py-2 font-medium transition-all shadow-sm hover:shadow-violet-500/20"
           />
         </div>
 

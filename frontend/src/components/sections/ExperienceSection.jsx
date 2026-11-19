@@ -1,79 +1,77 @@
+"use client";
+
 /**
  * ExperienceSection.jsx
- * Displays verified academic coursework and self-directed project development experience.
- * Avoids any fabricated employment history.
+ * Independent Full-Width Section for Experience & Practice:
+ * - Compact, balanced card layout with subtle left-side accent border.
+ * - Consistent header pairing category type and timeline.
+ * - Prominent title, organization in violet, clear description, and key practice achievements.
  */
 
 import experienceList from "@/data/experience";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 
 export default function ExperienceSection() {
   return (
-    <section
-      id="experience"
-      aria-label="Experience"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950/60 border-t border-zinc-900"
-    >
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          title="Experience &amp; Project Practice"
-          subtitle="Honest student experience: academic software engineering coursework and self-directed project building."
-        />
-
-        <div className="max-w-4xl mx-auto space-y-6">
-          {experienceList.map((item, index) => (
-            <Card
-              key={item.id}
-              className="relative p-6 sm:p-8 hover:border-zinc-700 transition-all duration-300"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
-                      {item.type}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-zinc-100">
-                    {item.role}
-                  </h3>
-                  <p className="text-sm font-semibold text-violet-300 mt-0.5">
-                    {item.organization}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="inline-block rounded-full border border-zinc-700 bg-zinc-800/80 px-3 py-1 text-xs font-medium text-zinc-300">
-                    {item.timeline}
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-sm text-zinc-300 leading-relaxed mb-5">
-                {item.description}
-              </p>
-
-              <div className="pt-4 border-t border-zinc-800/80">
-                <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-3">
-                  Key Focus Areas
-                </h4>
-                <ul className="space-y-2">
-                  {item.points.map((point, ptIdx) => (
-                    <li
-                      key={ptIdx}
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-400 leading-relaxed"
-                    >
-                      <span className="mt-1.5 h-1 w-1 rounded-full bg-violet-400 shrink-0" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Card>
-          ))}
-        </div>
+    <div className="w-full">
+      {/* Section Header */}
+      <div className="mb-10 text-center lg:text-left">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1 text-xs font-semibold text-violet-300 mb-3">
+          💼 Practice &amp; Experience
+        </span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Experience &amp; Project Practice
+        </h2>
+        <p className="mt-3 text-base text-[#A1A1AA] max-w-2xl">
+          Verified academic coursework, self-directed engineering, and collaborative team practice.
+        </p>
       </div>
-    </section>
+
+      {/* Compact, Well-Proportioned Experience Cards */}
+      <div className="space-y-6">
+        {experienceList.map((item) => (
+          <div
+            key={item.id}
+            className="group relative rounded-2xl border border-white/10 border-l-4 border-l-cyan-400 bg-[#141725]/85 p-6 sm:p-7 backdrop-blur-xl shadow-xl hover:border-cyan-400/40 hover:bg-[#181C2E]/90 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+          >
+            {/* Header: Category Type & Timeline Badge */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                {item.type}
+              </span>
+
+              <span className="inline-flex items-center rounded-full border border-white/10 bg-[#10121B] px-3 py-1 text-xs font-medium text-slate-300">
+                {item.timeline}
+              </span>
+            </div>
+
+            {/* Role Title & Organization */}
+            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-200 transition-colors">
+              {item.role}
+            </h3>
+            <p className="text-sm sm:text-base font-semibold text-violet-300 mt-1">
+              {item.organization}
+            </p>
+
+            {/* Description */}
+            <p className="mt-3 text-sm leading-relaxed text-[#A1A1AA]">
+              {item.description}
+            </p>
+
+            {/* Key Accomplishments Points */}
+            {item.points && item.points.length > 0 && (
+              <ul className="mt-4 space-y-2 pt-4 border-t border-white/5">
+                {item.points.map((point, index) => (
+                  <li key={index} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                    <span className="text-cyan-400 font-bold mt-0.5">•</span>
+                    <span className="leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

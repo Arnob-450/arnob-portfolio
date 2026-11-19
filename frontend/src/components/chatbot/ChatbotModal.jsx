@@ -119,8 +119,16 @@ export default function ChatbotModal() {
         setErrorNotice(data.message || "Failed to receive response from assistant.");
       }
     } catch (networkErr) {
-      console.error("[Chatbot Error]:", networkErr);
+      console.warn("[Chatbot Notice]: Backend unreachable:", networkErr.message);
       setErrorNotice("Unable to reach the AI assistant. Please check your connection.");
+      const offlineNotice = {
+        id: createMessageId("offline"),
+        role: "assistant",
+        content:
+          "⚠️ I'm currently unable to connect to the backend server. If running locally, please ensure the Express backend is running (`node src/server.js` on port 5000), or feel free to message Arnob directly via the Contact form!",
+        timestamp: getFormattedTime(),
+      };
+      setMessages((prev) => [...prev, offlineNotice]);
     } finally {
       setIsLoading(false);
     }
@@ -172,14 +180,14 @@ export default function ChatbotModal() {
           role="dialog"
           aria-modal="true"
           aria-label="AI Portfolio Assistant Window"
-          className="fixed bottom-24 right-4 sm:right-6 z-50 flex h-[560px] max-h-[80vh] w-[92vw] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/95 shadow-2xl shadow-black/80 backdrop-blur-xl animate-fade-in"
+          className="fixed bottom-24 right-4 sm:right-6 z-50 flex h-[560px] max-h-[80vh] w-[92vw] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-[#232634] bg-[#101119]/95 shadow-2xl shadow-black/80 backdrop-blur-xl animate-fade-in"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-zinc-800/80 bg-zinc-900/80 px-4 py-3.5">
+          <div className="flex items-center justify-between border-b border-[#232634] bg-[#171923]/90 px-4 py-3.5">
             <div className="flex items-center gap-3">
               <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-violet-600 to-cyan-500 shadow-md shadow-violet-500/20 text-white font-bold text-sm">
                 AI
-                <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-900 bg-emerald-400" />
+                <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#101119] bg-emerald-400" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
@@ -196,7 +204,7 @@ export default function ChatbotModal() {
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close chat window"
-              className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
+              className="rounded-lg p-1.5 text-zinc-400 hover:bg-[#1C1E2B] hover:text-white transition-colors"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -214,7 +222,7 @@ export default function ChatbotModal() {
                     className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs sm:text-sm leading-relaxed shadow-sm ${
                       isUser
                         ? "bg-violet-600 text-white rounded-br-xs"
-                        : "bg-zinc-900 border border-zinc-800/90 text-zinc-200 rounded-bl-xs"
+                        : "bg-[#171923] border border-[#232634] text-zinc-200 rounded-bl-xs"
                     }`}
                   >
                     <p className="whitespace-pre-wrap">{msg.content}</p>

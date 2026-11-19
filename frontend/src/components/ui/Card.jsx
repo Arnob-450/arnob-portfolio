@@ -14,7 +14,7 @@ export default function Card({ className, children, ...rest }) {
   return (
     <div
       className={cn(
-        "rounded-xl border border-zinc-800 bg-zinc-900 p-6 transition-colors",
+        "rounded-3xl border border-white/10 bg-[#141725] p-6 sm:p-8 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-violet-500/40 hover:bg-[#181C2E]",
         className
       )}
       {...rest}

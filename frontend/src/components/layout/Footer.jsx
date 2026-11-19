@@ -21,21 +21,19 @@ export default function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="border-t border-zinc-900 bg-zinc-950 py-12 px-4 sm:px-6 lg:px-8 text-zinc-400"
+      className="border-t border-[#232634] bg-[#08090D] py-12 px-4 sm:px-6 lg:px-8 text-zinc-400"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-zinc-900">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-[#232634]">
           {/* Brand & Bio Column */}
           <div className="md:col-span-5 space-y-3">
             <a
               href="#home"
               onClick={(e) => handleLinkClick(e, "#home")}
-              className="inline-flex items-center gap-1 text-lg font-bold text-zinc-100 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-lg font-bold text-white hover:scale-105 transition-transform"
             >
-              <span className="text-violet-400">&lt;</span>
-              <span>{personal.name}</span>
-              <span className="text-cyan-400 font-mono"> /</span>
-              <span className="text-violet-400">&gt;</span>
+              <span className="text-violet-400 font-mono text-base font-bold">&lt;/&gt;</span>
+              <span className="font-extrabold text-white">Arnob</span>
             </a>
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
               {personal.title} studying Software Engineering at Daffodil International University. Dedicated to creating responsive, high-performance web solutions.

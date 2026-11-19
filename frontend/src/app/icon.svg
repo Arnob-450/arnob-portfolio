@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12131C"/>
+      <stop offset="100%" stop-color="#08090D"/>
+    </linearGradient>
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Rounded Container with Subtle Border -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgGrad)" stroke="#27272A" stroke-width="2"/>
+
+  <!-- Left Bracket < (Violet) -->
+  <path d="M22 20 L12 32 L22 44" fill="none" stroke="url(#violetGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Center Slash / (Cyan) -->
+  <path d="M37 18 L27 46" fill="none" stroke="url(#cyanGrad)" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Right Bracket > (Violet) -->
+  <path d="M42 20 L52 32 L42 44" fill="none" stroke="url(#violetGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

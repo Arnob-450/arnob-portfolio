@@ -122,31 +122,33 @@ export default function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      aria-label="Contact me"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950/60 border-t border-zinc-900"
-    >
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          title="Get In Touch"
-          subtitle="Interested in collaborating or have a question? Leave a message or reach out directly."
-        />
+    <div className="w-full">
+      <div className="mb-12 text-center lg:text-left">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1 text-xs font-semibold text-violet-300 mb-3">
+          ✉ Contact Me
+        </span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Get In Touch
+        </h2>
+        <p className="mt-3 text-base text-[#A1A1AA] max-w-2xl">
+          Interested in collaborating or have a question? Leave a message or reach out directly.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Direct Contact Info & Socials */}
           <div className="lg:col-span-5 flex flex-col gap-5">
             {/* Direct Email Card */}
-            <Card className="hover:border-zinc-700 transition-colors">
+            <div className="rounded-3xl border border-white/10 bg-[#0E101D]/90 p-6 backdrop-blur-xl shadow-2xl hover:border-violet-500/30 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/10 border border-violet-500/30 text-violet-400">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400">
                   ✉️
                 </span>
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold">
+                  <h4 className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
                     Direct Email
                   </h4>
-                  <p className="text-sm font-semibold text-zinc-200">
+                  <p className="text-sm font-semibold text-white">
                     Send a note anytime
                   </p>
                 </div>
@@ -157,31 +159,31 @@ export default function ContactSection() {
               >
                 {personal.contact.email}
               </a>
-            </Card>
+            </div>
 
             {/* University & Location Card */}
-            <Card className="hover:border-zinc-700 transition-colors">
+            <div className="rounded-3xl border border-white/10 bg-[#0E101D]/90 p-6 backdrop-blur-xl shadow-2xl hover:border-violet-500/30 transition-colors">
               <div className="flex items-center gap-3 mb-2">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
                   📍
                 </span>
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold">
+                  <h4 className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
                     Location &amp; Institution
                   </h4>
-                  <p className="text-sm font-semibold text-zinc-200">
+                  <p className="text-sm font-semibold text-white">
                     {personal.contact.location}
                   </p>
                 </div>
               </div>
-              <p className="mt-2 text-xs text-zinc-400">
+              <p className="mt-2 text-xs text-slate-400">
                 {personal.education.university} (Software Engineering Dept)
               </p>
-            </Card>
+            </div>
 
             {/* Social Links Card */}
-            <Card className="hover:border-zinc-700 transition-colors">
-              <h4 className="text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-3">
+            <div className="rounded-3xl border border-white/10 bg-[#0E101D]/90 p-6 backdrop-blur-xl shadow-2xl hover:border-violet-500/30 transition-colors">
+              <h4 className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">
                 Professional Profiles
               </h4>
               <div className="flex flex-col gap-2.5">
@@ -189,7 +191,7 @@ export default function ContactSection() {
                   href={personal.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-lg border border-zinc-800 bg-zinc-950/60 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-xl border border-white/10 bg-[#121424] text-xs text-slate-300 hover:text-white hover:border-violet-500/40 transition-colors"
                 >
                   <span className="flex items-center gap-2">
                     <svg className="h-4 w-4 text-violet-400" fill="currentColor" viewBox="0 0 24 24">
@@ -197,14 +199,14 @@ export default function ContactSection() {
                     </svg>
                     <span>GitHub Profile</span>
                   </span>
-                  <span className="text-zinc-500 font-mono text-[11px]">↗</span>
+                  <span className="text-slate-500 font-mono text-[11px]">↗</span>
                 </a>
 
                 <a
                   href={personal.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-2.5 rounded-lg border border-zinc-800 bg-zinc-950/60 text-xs text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-xl border border-white/10 bg-[#121424] text-xs text-slate-300 hover:text-white hover:border-cyan-500/40 transition-colors"
                 >
                   <span className="flex items-center gap-2">
                     <svg className="h-4 w-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
@@ -212,20 +214,20 @@ export default function ContactSection() {
                     </svg>
                     <span>LinkedIn Profile</span>
                   </span>
-                  <span className="text-zinc-500 font-mono text-[11px]">↗</span>
+                  <span className="text-slate-500 font-mono text-[11px]">↗</span>
                 </a>
               </div>
-            </Card>
+            </div>
           </div>
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <Card className="p-6 sm:p-8 border-zinc-800 bg-zinc-900">
+            <div className="rounded-3xl border border-white/10 bg-[#0E101D]/90 p-6 sm:p-8 backdrop-blur-xl shadow-2xl hover:border-violet-500/30 transition-all">
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-zinc-100">
+                <h3 className="text-xl font-bold text-white">
                   Send a Message
                 </h3>
-                <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+                <p className="text-xs sm:text-sm text-slate-400 mt-1">
                   Fill out the form below. All fields marked with{" "}
                   <span className="text-violet-400 font-semibold">*</span> are required.
                 </p>
@@ -438,10 +440,9 @@ export default function ContactSection() {
                   </Button>
                 </div>
               </form>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
-    </section>
   );
 }

@@ -1,53 +1,147 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
-   Design Tokens — Portfolio Dark Theme
+   Design System Tokens — Premium Cosmic Developer Theme
+   Main: #08090D | Surface: #10121B | Card: #141725
+   Violet: #8B5CF6 | Cyan: #22D3EE
    ───────────────────────────────────────────── */
 :root {
   /* Surfaces */
-  --bg-primary:      #09090B;
-  --bg-card:         #18181B;
+  --bg-main:         #08090D;
+  --bg-secondary:    #10121B;
+  --bg-card:         #141725;
+  --bg-card-hover:   #1A1E30;
 
   /* Accents */
-  --accent-primary:   #8B5CF6;
-  --accent-secondary: #06B6D4;
+  --accent-violet:   #8B5CF6;
+  --accent-purple:   #A855F7;
+  --accent-cyan:     #22D3EE;
+  --accent-sky:      #38BDF8;
 
-  /* Text */
-  --text-primary:    #FAFAFA;
+  /* Typography */
+  --text-main:       #F5F5F7;
   --text-muted:      #A1A1AA;
+  --text-subtle:     #71717A;
 
-  /* Borders */
-  --border-subtle:   #27272A;
+  /* Borders & Glows */
+  --border-subtle:   rgba(255, 255, 255, 0.08);
+  --border-hover:    rgba(139, 92, 246, 0.4);
 }
 
 /* ─────────────────────────────────────────────
-   Base styles
+   Base Styles
    ───────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #08090D;
+  color: #F5F5F7;
 }
 
 body {
-  background-color: #09090B;
-  color: #FAFAFA;
+  background-color: #08090D;
+  color: #F5F5F7;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* ─────────────────────────────────────────────
-   Scrollbar (Webkit)
+   Rich Ambient Cosmic Background Layer (Always Visible)
+   ───────────────────────────────────────────── */
+.cosmic-ambient-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Base technical dot grid pattern */
+.cosmic-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle 1px at center, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 90% 90% at center, black 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at center, black 40%, transparent 95%);
+  opacity: 0.65;
+}
+
+/* Large atmospheric glowing orbs */
+.cosmic-orb-violet-hero {
+  position: absolute;
+  top: -100px;
+  left: 5%;
+  width: 650px;
+  height: 650px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 75%);
+  filter: blur(80px);
+  animation: floatSlow 12s ease-in-out infinite alternate;
+}
+
+.cosmic-orb-cyan-hero {
+  position: absolute;
+  top: 50px;
+  right: 5%;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.06) 50%, transparent 75%);
+  filter: blur(80px);
+  animation: floatSlow 14s ease-in-out infinite alternate-reverse;
+}
+
+.cosmic-orb-mid-violet {
+  position: absolute;
+  top: 38%;
+  left: -150px;
+  width: 700px;
+  height: 700px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(139, 92, 246, 0.05) 55%, transparent 80%);
+  filter: blur(90px);
+  animation: floatSlow 16s ease-in-out infinite alternate;
+}
+
+.cosmic-orb-lower-cyan {
+  position: absolute;
+  top: 68%;
+  right: -100px;
+  width: 650px;
+  height: 650px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.16) 0%, rgba(14, 165, 233, 0.05) 55%, transparent 80%);
+  filter: blur(85px);
+  animation: floatSlow 18s ease-in-out infinite alternate-reverse;
+}
+
+.cosmic-orb-bottom-violet {
+  position: absolute;
+  bottom: -150px;
+  left: 25%;
+  width: 750px;
+  height: 750px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.20) 0%, transparent 70%);
+  filter: blur(95px);
+}
+
+/* ─────────────────────────────────────────────
+   Custom Scrollbar
    ───────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090B;
+  background: #08090D;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #1C2030;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -55,18 +149,182 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   Focus ring for accessibility
+   Focus State
    ───────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid #8B5CF6;
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline-offset: 3px;
+  border-radius: 8px;
 }
 
 /* ─────────────────────────────────────────────
-   Selection highlight
+   Selection Highlight
    ───────────────────────────────────────────── */
 ::selection {
-  background-color: rgba(139, 92, 246, 0.35);
-  color: #ffffff;
+  background-color: rgba(139, 92, 246, 0.4);
+  color: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────
+   Keyframe Animations
+   ───────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.6deg);
+  }
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(25px, -20px) scale(1.05);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.98);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Infinite Horizontal Marquee / Ticker */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Ticker classes */
+.ticker-track-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 34s linear infinite;
+}
+
+.ticker-track-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 34s linear infinite;
+}
+
+.ticker-container:hover .ticker-track-left,
+.ticker-container:hover .ticker-track-right {
+  animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────────
+   Translucent Glassmorphic Card Surfaces
+   ───────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(20, 23, 37, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─────────────────────────────────────────────
+   Respect Accessibility Reduced Motion
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cosmic-orb-violet-hero,
+  .cosmic-orb-cyan-hero,
+  .cosmic-orb-mid-violet,
+  .cosmic-orb-lower-cyan,
+  .cosmic-orb-bottom-violet {
+    animation: none !important;
+  }
+  .ticker-track-left,
+  .ticker-track-right {
+    animation: none !important;
+    transform: none !important;
+  }
 }
